@@ -1,0 +1,13 @@
+*.pyc
+**/*.pyc
+run_input.txt
+input.txt
+boto/
+results/
+
+data/input.txt
+data/output.txt
+data/run_input.txt
+data/somefile.txt
+
+output.txt
