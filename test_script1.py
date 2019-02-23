@@ -17,7 +17,7 @@ def load_graph(file_name):
 	# remove disconnected nodes (i.e. len(v)>0)
 	# convert to integers
 	data = {k: [int(u) for u in v] for k, v in data.items() if len(v)>0}
-	return dict2graph(data)
+	return data, dict2graph(data)
 
 def dict2graph(my_dict):
 	"""Convert dictionary of nodes-edges to networkx graph object"""
@@ -55,21 +55,21 @@ def choose_highest_percolation_centrality_nodes(graph, n_nodes):
 
 # choose strategies
 file_name = 'testgraph1.json'
-graph = load_graph(file_name)
+data, graph = load_graph(file_name)
 n_nodes = int(len(graph.nodes)/4)
 nodes = {}
 nodes["strategy1"] = choose_random_nodes(graph=graph, n_nodes=n_nodes)
 nodes["strategy2"] = choose_highest_degree_nodes(graph=graph, n_nodes=n_nodes)
 nodes["strategy3"] = choose_highest_closeness_centrality_nodes(graph=graph, n_nodes=n_nodes)
-sim.run(data, nodes)
+print(sim.run(data, nodes))
 
 
 # choose strategies
 file_name = 'testgraph2.json'
-graph = load_graph(file_name)
+data, graph = load_graph(file_name)
 n_nodes = int(len(graph.nodes)/4)
 nodes = {}
 nodes["strategy1"] = choose_random_nodes(graph=graph, n_nodes=n_nodes)
 nodes["strategy2"] = choose_highest_degree_nodes(graph=graph, n_nodes=n_nodes)
 nodes["strategy3"] = choose_highest_closeness_centrality_nodes(graph=graph, n_nodes=n_nodes)
-sim.run(data, nodes)
+print(sim.run(data, nodes))
