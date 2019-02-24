@@ -30,24 +30,6 @@ def dict2graph(my_dict):
 		graph.add_edges_from([(node,k) for k in my_dict[node]])
 	return graph
 
-def choose_random_nodes(graph, n_nodes):
-	foo = list(np.random.choice(graph.nodes, size=n_nodes, replace=False))
-	return foo
-
-def choose_highest_degree_nodes(graph, n_nodes):
-	foo = [k[0] for k in sorted(graph.degree, key=lambda x: x[1], reverse=True)]
-	return foo[:n_nodes]
-
-def choose_highest_closeness_centrality_nodes(graph, n_nodes):
-	foo = [k[0] for k in sorted(nx.closeness_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-	return foo[:n_nodes]
-
-def choose_highest_percolation_centrality_nodes(graph, n_nodes):
-	# has a bug
-	foo = [k[0] for k in sorted(nx.percolation_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-	return foo[:n_nodes]
-
-
 
 # metrics to look at:
 # current_flow_closeness_centrality
