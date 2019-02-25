@@ -1,16 +1,16 @@
 import numpy as np
 import networkx as nx
 
-def highest_degree(graph, n, aug_frac=1.3):
-    seeds = [str(k[0]) for k in sorted(graph.degree, key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:int(aug_frac*n)], n)
-
 def random(graph, n):
     return [str(i) for i in np.random.choice(graph.nodes, size=n, replace=False)]
 
+def highest_degree(graph, n, aug_frac=1.3):
+    seeds = [str(k[0]) for k in sorted(graph.degree, key=lambda x: x[1], reverse=True)]
+    return list(np.random.choice(seeds[:int(aug_frac*n)], n))
+
 def highest_closeness_centrality(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.closeness_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:int(aug_frac*n)], n)
+    return list(np.random.choice(seeds[:int(aug_frac*n)], n))
 
 def highest_katz_centrality_np(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.katz_centrality_numpy(graph).items(), key=lambda x: x[1], reverse=True)]
@@ -60,12 +60,24 @@ def target_cliques_v2(graph, n, frac=0.7):
                     return my_seeds
 
 
-strategies_master_list = [
-    highest_degree,
-    random,
-    highest_closeness_centrality,
-    highest_katz_centrality_np,
-    highest_information_centrality,
-    target_cliques_v2,
-    target_cliques_v1
-]
+def strategy_vector(scope):
+    if scope == "master":
+        return [
+            highest_degree,
+            random,
+            highest_closeness_centrality,
+            highest_katz_centrality_np,
+            highest_information_centrality,
+            highest_subgraph_centrality,
+            highest_generalized_degree,
+            highest_second_order_centrality,
+            target_cliques_v1,
+            target_cliques_v2
+        ]
+
+    if scope == "test":
+        return [
+            random,
+            highest_degree,
+            highest_closeness_centrality
+        ]
