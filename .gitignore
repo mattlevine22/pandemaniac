@@ -12,3 +12,8 @@ data/somefile.txt
 data/
 
 output.txt
+seeds.txt
+graph.json
+
+__pycache__/
+.keras/
