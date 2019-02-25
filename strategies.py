@@ -3,34 +3,34 @@ import networkx as nx
 
 def highest_degree(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(graph.degree, key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def random(graph, n):
     return [str(i) for i in np.random.choice(graph.nodes, size=n, replace=False)]
 
 def highest_closeness_centrality(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.closeness_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def highest_katz_centrality_np(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.katz_centrality_numpy(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def highest_information_centrality(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.information_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def highest_subgraph_centrality(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.subgraph_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def highest_generalized_degree(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.generalized_degree(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def highest_second_order_centrality(graph, n, aug_frac=1.3):
     seeds = [str(k[0]) for k in sorted(nx.second_order_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
-    return np.random.choice(seeds[:(aug_frac*n)], n)
+    return np.random.choice(seeds[:int(aug_frac*n)], n)
 
 def target_cliques_v1(graph, n):
     """The idea is to request all nodes in the biggest cliques"""
