@@ -15,5 +15,7 @@ output.txt
 seeds.txt
 graph.json
 
+.python_history
 __pycache__/
 .keras/
+models/
