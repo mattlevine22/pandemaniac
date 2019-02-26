@@ -1,25 +1,30 @@
 from time import time
+import struct
 import requests
 
 from web import *
 
-server_url = "http://localhost:6900"
+COMPUTE_URL = "http://localhost:6900"
+GRAPH_FILE = "graph.json"
+SEEDS_FILE = "seeds.txt"
+
 
 def compute_seeds(graph_json, n_players, n_seeds):
-    response = requests.post(server_url, json={
+    result = requests.post(COMPUTE_URL, json={
         "graph": graph_json,
         "n_players" : str(n_players),
         "n_seeds" : str(n_seeds)
     })
 
-    return response.content
+    print(result.content.decode("utf-8"))
+    with open(SEEDS_FILE, 'w') as f:
+        f.write(result.content.decode("utf-8"))
+
+    # return result.content
 
 if __name__ == "__main__":
     game = "2.5.1"
-    n_players, n_seeds, graph_id = [int(val) for val in game.split(".")]
     download(game)
 
-    seeds = compute_seeds(open("graph.json", 'r').read(), n_players, n_seeds)
-    print(seeds)
-    # with open("seeds.txt", 'w') as f:
-    #     f.write(seeds)
+    n_players, n_seeds, graph_id = [int(val) for val in game.split(".")]
+    compute_seeds(open(GRAPH_FILE, 'r').read(), n_players, n_seeds)

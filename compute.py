@@ -1,6 +1,7 @@
 from sys import exit
 import os
 from time import time
+import struct
 import json
 import subprocess as sub
 from multiprocessing import Pool
@@ -11,54 +12,56 @@ from test_script1 import *
 from sim import *
 from strategies import *
 
-def winner(result):
-	return max(result.keys(), key=lambda x: result[x])
+HOST_NAME = 'localhost'
+PORT_NUMBER = 6900
+N_PROCS = 4
 
-def run_games(args):
-    graph_nx, graph_dict, strat_indices, n_seeds, n_runs = args
-    logs = open("logs/{}.txt".format(os.getpid()), "w")
+def run_game(args):
+    graph_nx, graph_dict, team_seeds, opp_seeds = args
+    # logs = open("logs/{}.txt".format(os.getpid()), "w")
 
-    # print(graph_nx, graph_dict, game_strats, n_seeds, n_runs, file=logs)
-    strategies = strategy_vector("test")
+    # team_seeds = [strat(graph_nx, n_seeds) for strat in team_strats]
+    # opp_seeds = [strat(graph_nx, n_seeds) for strat in opp_strats]
 
-    scores = {str(i) : 0 for i in strat_indices}
-    for _ in range(n_runs):
-        seeds = {str(i) : strategies[i](graph_nx, n_seeds) for i in strat_indices}
-        print(seeds, file=logs)
-        print(graph_dict, file=logs)
-        print(run(graph_dict, seeds), file=logs)
+    input_seeds = {
+        "team" : team_seeds,
+        "opp" : opp_seeds,
+    }
+    score = run(graph_dict, input_seeds)
 
-        for i, score in run(graph_dict, seeds).items():
-            scores[i] += score
-
-        print(scores, '\n', file=logs)
-
-    logs.close()
-    return scores
-
-def compute_distributed(graph_nx, graph_dict, n_players, n_seeds, n_runs=10, n_procs=4):
-    strategies = strategy_vector("test")
-    strat_sets = list(itertools.product(range(len(strategies)), repeat=n_players))
-    process_args = [(graph_nx, graph_dict, set, n_seeds, n_runs) for set in strat_sets]
-
-    os.system("rm -r logs && mkdir logs")
-    print(len(process_args))
-
-    # print("nx", graph_nx)
-
-    start = time()
-    with Pool(n_procs) as pool:
-        scores = pool.map(run_games, process_args)
-
-    result = ""
-    for score in scores:
-        result += "{}\n".format(score)
-
-    print("compute time:", time() - start)
-    return result
+    # logs.close()
+    return score["team"] / len(graph_dict)
 
 
-class BasilHandler(BaseHTTPRequestHandler):
+def simulate_strategies(graph_nx, graph_dict, n_players, n_seeds, team_strats, opp_strats):
+    n, m = len(team_strats), len(opp_strats)
+    team_seeds = [strat(graph_nx, n_seeds) for strat in team_strats]
+    opp_seeds = [strat(graph_nx, n_seeds) for strat in opp_strats]
+
+    args = []
+    for i in range(n):
+        for j in range(m):
+            args.append((graph_nx, graph_dict, team_seeds[i], opp_seeds[j]))
+
+    with Pool(N_PROCS) as pool:
+        scores = pool.map(run_game, args)
+
+    return np.array(scores).reshape((n, m))
+
+def compute_seeds(graph_nx, graph_dict, n_players, n_seeds):
+    team_strats = get_strats("team")
+    opp_strats = get_strats("opp", n_players)
+
+    scores = simulate_strategies(graph_nx, graph_dict, n_players, n_seeds, team_strats, opp_strats)
+    strategy_scores = np.sum(scores, axis=1)
+    winning_strat = team_strats[np.argmax(strategy_scores)]
+    print(winning_strat)
+
+    seeds = '\n'.join(winning_strat(graph_nx, n_seeds))
+    return seeds
+
+
+class ComputeHandler(BaseHTTPRequestHandler):
     # def do_HEAD(self):
     #     pass
         # print("do head")
@@ -74,6 +77,7 @@ class BasilHandler(BaseHTTPRequestHandler):
         graph_nx, graph_dict = graph_from_string(body["graph"])
         n_players, n_seeds = int(body["n_players"]), int(body["n_seeds"])
 
+        print("game specs:", len(graph_dict), n_players, n_seeds)
         return graph_nx, graph_dict, n_players, n_seeds
 
     def respond(self, opts):
@@ -85,15 +89,15 @@ class BasilHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        results = compute_distributed(*self.game_from_body())
-        return bytes(results, 'UTF-8')
+        start = time()
+        seeds = compute_seeds(*self.game_from_body())
+        print("compute time:", time() - start)
+
+        return seeds.encode("utf-8")
 
 if __name__ == '__main__':
-    HOST_NAME = 'localhost'
-    PORT_NUMBER = 6900
-
     server_class = HTTPServer
-    httpd = server_class((HOST_NAME, PORT_NUMBER), BasilHandler)
+    httpd = server_class((HOST_NAME, PORT_NUMBER), ComputeHandler)
     print("server up: {}:{}".format(HOST_NAME, PORT_NUMBER))
 
     try:
