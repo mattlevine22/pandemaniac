@@ -12,35 +12,35 @@ def highest_degree(graph, n, aug_frac=AUG_FRAC, deterministic=True):
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_closeness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.closeness_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_katz_centrality_np(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.katz_centrality_numpy(graph).items(), key=lambda x: x[1], reverse=True)]
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_information_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.information_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_subgraph_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.subgraph_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_generalized_degree(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     # TODO: some sort of error in this one
@@ -48,14 +48,14 @@ def highest_generalized_degree(graph, n, aug_frac=AUG_FRAC, deterministic=True):
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_second_order_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.second_order_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
 
     if deterministic:
         return seeds[:n]
-    return list(np.random.choice(seeds[:int(aug_frac * n)], n))
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def target_cliques_v1(graph, n):
     """The idea is to request all nodes in the biggest cliques"""
