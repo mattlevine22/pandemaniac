@@ -3,8 +3,6 @@ from time import time
 import struct
 import requests
 
-from web import *
-
 GRAPH_FILE = "graphs/graph_{}.json"
 SEEDS_FILE = "seeds/seeds_{}.txt"
 
