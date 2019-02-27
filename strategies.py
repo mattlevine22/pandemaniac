@@ -21,6 +21,13 @@ def highest_closeness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True
         return seeds[:n]
     return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
+def highest_closeness_vitality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    seeds = [str(k[0]) for k in sorted(nx.closeness_vitality(graph).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
+
 def highest_betweenness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.betweenness_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
 
@@ -200,7 +207,8 @@ def get_strats(scope, n_players=2):
             highest_betweenness_centrality,
             highest_approximate_current_flow_betweenness_centrality,
             highest_load_centrality,
-            highest_eigenvector_centrality
+            highest_eigenvector_centrality,
+            highest_closeness_vitality
         ]
 
     if scope == "team":
@@ -222,7 +230,8 @@ def get_strats(scope, n_players=2):
             highest_betweenness_centrality,
             highest_approximate_current_flow_betweenness_centrality,
             highest_load_centrality,
-            highest_eigenvector_centrality
+            highest_eigenvector_centrality,
+            highest_closeness_vitality
         ]
 
     if scope == "opp":
