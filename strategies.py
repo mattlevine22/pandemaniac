@@ -221,15 +221,7 @@ def get_strats(scope, n_players=2):
             highest_subgraph_centrality,
             swarm_high_degrees,
             # highest_generalized_degree,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             # highest_second_order_centrality,
-=======
-            highest_second_order_centrality,
->>>>>>> Stashed changes
-=======
-            highest_second_order_centrality,
->>>>>>> Stashed changes
             # target_cliques_v1,
             # target_cliques_v2,
             secure_single_highD_with_lowD_neighbors,

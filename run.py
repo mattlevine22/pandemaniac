@@ -2,6 +2,7 @@ import sys
 from time import time
 import struct
 import requests
+import mechanize
 
 GRAPH_FILE = "graphs/graph_{}.json"
 SEEDS_FILE = "seeds/seeds_{}.txt"
@@ -13,13 +14,13 @@ def download(game_name="2.5.1"):
     b = mechanize.Browser()
     b.set_handle_robots(False)
 
-    b.open(login_url)
+    b.open(LOGIN_URL)
     b.select_form(action="/login")
     b.form["username"] = "Animaniacs"
     b.form["password"] = "2d82b0t8"
     b.submit()
 
-    b.retrieve(download_url.format(game_name), GRAPH_FILE.format(game_name))
+    b.retrieve(DOWNLOAD_URL.format(game_name), GRAPH_FILE.format(game_name))
 
 
 def compute_seeds(compute_url, game_name, n_players, n_seeds):
