@@ -1,20 +1,14 @@
 from sys import exit
 from time import time, sleep
 import requests
-# import re
 import mechanize
 
-GRAPH_FILE = "graph_{}.json"
+GRAPH_FILE = "graphs/graph_{}.json"
 
-login_url = "http://35.167.100.168:3000/login"
-download_url = "http://35.167.100.168:3000/submit/{}/download"
-upload_url = "http://35.167.100.168:3000/submit/{}"
+LOGIN_URL = "http://35.167.100.168:3000/login"
+DOWNLOAD_URL = "http://35.167.100.168:3000/submit/{}/download"
 
-def save_response(b, game_name):
-    html = open(GRAPH_FILE.format(game_name), 'w')
-    html.write(b.response().read().decode("utf-8"))
-
-def logged_in_browser():
+def download(game_name="2.5.1"):
     b = mechanize.Browser()
     b.set_handle_robots(False)
 
@@ -22,67 +16,11 @@ def logged_in_browser():
     b.select_form(action="/login")
     b.form["username"] = "Animaniacs"
     b.form["password"] = "2d82b0t8"
-    # print(b.form)
-    # print()
-    # control = b.form.find_control("username")
-    # print(control.type)
-    # print()
     b.submit()
 
-
-    return b
-
-def download(game_name="2.5.1"):
-    b = logged_in_browser()
-    # b.follow_link(nr=0)
-    # b.follow_link(url="/submit/" + graph_label)
     b.retrieve(download_url.format(game_name), GRAPH_FILE.format(game_name))
 
-def upload(seeds_file="seeds.txt", graph_label="2.5.1"):
-    b = logged_in_browser()
-    # b.set_all_readonly(False)
-    b.open(upload_url.format(graph_label))
-    print(b.forms())
 
-    b.select_form(action="{}/upload".format(graph_label))
-    print(b.form)
-    b.form.method = "POST"
-    b.form.set_all_readonly(False)
-    # print(b.method)
-    control = b.form.find_control(type="file")
-    # button = b.form.find_control(type="button")
-    # submit = b.form.find_control(type="submit")
-    # print(control.type)
-    # print(control.get_value(type="file"))
-    control.add_file(open(seeds_file, 'r'), None, None)
-    # print(form)
-    # print()
-    print(b.form)
-    print()
-    sleep(1)
-    # b.submit()
-    b.form.click(type="submit", id=None, nr=0)
-
-    print(b.forms())
-
-    # print(control)
-    # print()
-    # print(b.form)
-    # print()
-    # b.submit()
-
-    # b.select_form(action="{}/upload".format(graph_label))
-    # print(b.form)
-    # print()
-    #
-    # b.form.find_control(type="file").add_file(open(seeds_file, 'rb'), None, "seeds.txt")
-    # print(b.form)
-    # print()
-    # b.submit()
-    #
-    # b.form['hidden'] = "/Users/tkrasnoperov/Documents/Academics/CS144/pandemaniac/" + seeds_file
-    # b.submit()
-    # print(b.response().read())
 
 if __name__ == "__main__":
     graph_label = "8.35.1"

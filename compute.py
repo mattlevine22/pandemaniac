@@ -1,5 +1,4 @@
-from sys import exit
-import os
+import os, sys
 from time import time
 import struct
 import json
@@ -8,12 +7,10 @@ from multiprocessing import Pool
 import itertools
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-from test_script1 import *
+from load import *
 from sim import *
 from strategies import *
 
-HOST_NAME = 'localhost'
-PORT_NUMBER = 6900
 N_PROCS = 4
 
 def run_game(args):
@@ -50,6 +47,8 @@ def simulate_strategies(graph_nx, graph_dict, n_players, n_seeds, team_strats, o
     return np.array(scores).reshape((n, m))
 
 def compute_seeds(graph_nx, graph_dict, n_players, n_seeds):
+    start = time()
+
     team_strats = get_strats("team")
     opp_strats = get_strats("opp", n_players)
 
@@ -61,19 +60,15 @@ def compute_seeds(graph_nx, graph_dict, n_players, n_seeds):
     else:
         winning_strat = highest_degree
     print(winning_strat)
+
     print("best score:", best_score)
+    print("compute time:", time() - start, '\n\n')
 
     seeds = '\n'.join(winning_strat(graph_nx, n_seeds)) + '\n'
     return seeds
 
 
 class ComputeHandler(BaseHTTPRequestHandler):
-    # def do_HEAD(self):
-    #     pass
-        # print("do head")
-        # self.send_response(200)
-        # self.send_header('Content-type', 'text/html')
-        # self.end_headers()
 
     def do_POST(self):
         self.respond({'status': 200})
@@ -95,13 +90,18 @@ class ComputeHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        start = time()
+
         seeds = compute_seeds(*self.game_from_body())
-        print("compute time:", time() - start, '\n\n')
 
         return seeds.encode("utf-8")
 
 if __name__ == '__main__':
+    if sys.argv[1] == "local":
+        HOST_NAME = "localhost"
+    if sys.argv[1] == "remote":
+        HOST_NAME = "pandemaniac"
+    PORT_NUMBER = 6006
+
     server_class = HTTPServer
     httpd = server_class((HOST_NAME, PORT_NUMBER), ComputeHandler)
     print("server up: {}:{}".format(HOST_NAME, PORT_NUMBER))

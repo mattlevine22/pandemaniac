@@ -221,7 +221,15 @@ def get_strats(scope, n_players=2):
             highest_subgraph_centrality,
             swarm_high_degrees,
             # highest_generalized_degree,
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             # highest_second_order_centrality,
+=======
+            highest_second_order_centrality,
+>>>>>>> Stashed changes
+=======
+            highest_second_order_centrality,
+>>>>>>> Stashed changes
             # target_cliques_v1,
             # target_cliques_v2,
             secure_single_highD_with_lowD_neighbors,
@@ -229,9 +237,9 @@ def get_strats(scope, n_players=2):
             greedy_maxCover,
             highest_betweenness_centrality,
             highest_approximate_current_flow_betweenness_centrality,
-            highest_load_centrality,
-            highest_eigenvector_centrality,
-            highest_closeness_vitality
+            highest_load_centrality
+            # highest_eigenvector_centrality,
+            # highest_closeness_vitality
         ]
 
     if scope == "opp":

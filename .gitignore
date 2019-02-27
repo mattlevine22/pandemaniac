@@ -4,12 +4,18 @@ run_input.txt
 input.txt
 boto/
 results/
+.DS_Store
 
 data/input.txt
 data/output.txt
 data/run_input.txt
 data/somefile.txt
+graphs/
+seeds/
 data/
+learn/
+logs/
+test_graphs/
 
 output.txt
 seeds.txt
@@ -19,3 +25,4 @@ graph.json
 __pycache__/
 .keras/
 models/
+tame
