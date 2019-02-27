@@ -1,0 +1,16 @@
+NOTES
+
+2.10.12:
+127.0.0.1 - - [26/Feb/2019 22:57:48] "POST / HTTP/1.1" 200 -
+game specs: 500 2 10
+<function highest_closeness_centrality at 0x1161000d0>
+best score: 0.51
+compute time: 11.945636987686157 
+
+
+2.10.32:
+127.0.0.1 - - [26/Feb/2019 23:00:13] "POST / HTTP/1.1" 200 -
+game specs: 500 2 10
+<function swarm_high_degrees at 0x11612e1e0>
+best score: 0.626
+compute time: 7.534872055053711 
