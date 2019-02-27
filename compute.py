@@ -56,7 +56,10 @@ def compute_seeds(graph_nx, graph_dict, n_players, n_seeds):
     scores = simulate_strategies(graph_nx, graph_dict, n_players, n_seeds, team_strats, opp_strats)
     strategy_scores = np.mean(scores, axis=1)
     best_score = np.max(strategy_scores)
-    winning_strat = team_strats[np.argmax(strategy_scores)]
+    if best_score > 0.5:
+        winning_strat = team_strats[np.argmax(strategy_scores)]
+    else:
+        winning_strat = highest_degree
     print(winning_strat)
     print("best score:", best_score)
 
