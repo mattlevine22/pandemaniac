@@ -101,6 +101,50 @@ def swarm_high_degrees(graph, n, n_layers=1, n_neighbors=3):
             if len(my_seeds) == n:
                 return [str(s) for s in my_seeds]
 
+def highest_pagerank(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    seeds = [str(k[0]) for k in sorted(nx.pagerank(graph).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
+
+def greedy_maxCover(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    my_seeds = set()
+    covered_nodes = set()
+    node_sets = {node : set(graph.neighbors(node)) for node in graph.nodes}
+
+    while len(my_seeds) < n:
+        for node in graph.nodes:
+            node_sets[node] -= covered_nodes
+        best_node = max(graph.nodes, key=lambda v: len(node_sets[v]))
+        my_seeds.add(best_node)
+        covered_nodes.add(best_node)
+        covered_nodes.update(node_sets[best_node])
+
+    return list(my_seeds)
+
+
+def secure_single_highD_with_lowD_neighbors(graph, n, n_neighbors=2):
+    # rank nodes by decreasing degree
+    source_node = sorted(graph.degree, key=lambda x: x[1], reverse=True)[0][0]
+    # rank neighbors by increasing degree
+    my_seeds = [x[0] for x in sorted(graph.degree(graph.neighbors(source_node)), key=lambda x: x[1], reverse=False)[:(n-1)]]
+    my_seeds.append(source_node)
+    return [str(s) for s in my_seeds]
+
+
+    my_seeds = set()
+    for source, _ in ranked_nodes:
+        my_seeds.add(source)
+        # branch out from this central node 1 level
+        goo = sorted(graph.degree(graph.neighbors(source)), key=lambda x: x[1], reverse=True)
+        # new_nodes = list(np.random.choice(list(n_dist_nodes), n_neighbors, replace=False))
+        for k in range(n_neighbors):
+            # pdb.set_trace()
+            my_seeds.add(goo[k][0])
+            if len(my_seeds) == n:
+                return [str(s) for s in my_seeds]
+
 # def ta_strat(graph, n):
 #     return ["49", "59", "57", "148", "135", "10", "107", "77"]
 
@@ -119,7 +163,10 @@ def get_strats(scope, n_players=2):
             highest_generalized_degree,
             highest_second_order_centrality,
             target_cliques_v1,
-            target_cliques_v2
+            target_cliques_v2,
+            secure_single_highD_with_lowD_neighbors,
+            highest_pagerank,
+            greedy_maxCover
         ]
 
     if scope == "team":
@@ -134,7 +181,10 @@ def get_strats(scope, n_players=2):
             # highest_generalized_degree
             highest_second_order_centrality,
             target_cliques_v1,
-            target_cliques_v2
+            target_cliques_v2,
+            secure_single_highD_with_lowD_neighbors,
+            highest_pagerank,
+            greedy_maxCover
         ]
 
     if scope == "opp":
