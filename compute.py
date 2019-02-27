@@ -30,6 +30,7 @@ def run_game(args):
     score = run(graph_dict, input_seeds)
 
     # logs.close()
+    # NOTE: rint vs score
     return score["team"] / len(graph_dict)
 
 
@@ -53,11 +54,13 @@ def compute_seeds(graph_nx, graph_dict, n_players, n_seeds):
     opp_strats = get_strats("opp", n_players)
 
     scores = simulate_strategies(graph_nx, graph_dict, n_players, n_seeds, team_strats, opp_strats)
-    strategy_scores = np.sum(scores, axis=1)
+    strategy_scores = np.mean(scores, axis=1)
+    best_score = np.max(strategy_scores)
     winning_strat = team_strats[np.argmax(strategy_scores)]
     print(winning_strat)
+    print("best score:", best_score)
 
-    seeds = '\n'.join(winning_strat(graph_nx, n_seeds))
+    seeds = '\n'.join(winning_strat(graph_nx, n_seeds)) + '\n'
     return seeds
 
 
@@ -91,7 +94,7 @@ class ComputeHandler(BaseHTTPRequestHandler):
 
         start = time()
         seeds = compute_seeds(*self.game_from_body())
-        print("compute time:", time() - start)
+        print("compute time:", time() - start, '\n\n')
 
         return seeds.encode("utf-8")
 

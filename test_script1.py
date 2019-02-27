@@ -8,7 +8,7 @@ def graph_from_string(string):
 	data = json.loads(string,
 		object_hook=lambda d: {int(k) if k.lstrip('-').isdigit() else k: v for k, v in d.items()})
 
-	data = {str(k): [str(u) for u in v] for k, v in data.items() if len(v)>0}
+	data = {str(k): [str(u) for u in v] for k, v in data.items()}
 	return dict2graph(data), data
 
 def graph_from_file(file_name):
