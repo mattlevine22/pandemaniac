@@ -5,7 +5,17 @@ NOTES
 game specs: 500 2 10
 <function highest_closeness_centrality at 0x1161000d0>
 best score: 0.51
-compute time: 11.945636987686157 
+compute time: 11.945636987686157
+3
+39
+170
+40
+4
+8
+61
+144
+7
+106
 
 
 2.10.32:
@@ -13,4 +23,55 @@ compute time: 11.945636987686157
 game specs: 500 2 10
 <function swarm_high_degrees at 0x11612e1e0>
 best score: 0.626
-compute time: 7.534872055053711 
+compute time: 7.534872055053711
+59
+93
+80
+11
+1
+2
+5
+213
+6
+40
+
+2.5.3:
+127.0.0.1 - - [26/Feb/2019 23:06:23] "POST / HTTP/1.1" 200 -
+game specs: 100 2 5
+<function highest_closeness_centrality at 0x11930a0d0>
+best score: 0.58
+compute time: 0.41161012649536133
+15
+11
+9
+23
+35
+
+4.5.3:
+127.0.0.1 - - [26/Feb/2019 23:09:15] "POST / HTTP/1.1" 200 -
+game specs: 200 4 5
+<function greedy_maxCover at 0x11933f2f0>
+best score: 0.915
+compute time: 0.8694698810577393
+26
+1
+77
+33
+21
+
+4.10.3:
+127.0.0.1 - - [26/Feb/2019 23:10:45] "POST / HTTP/1.1" 200 -
+game specs: 500 4 10
+<function highest_closeness_centrality at 0x11930a0d0>
+best score: 0.73
+compute time: 9.127954006195068
+79
+46
+82
+128
+111
+116
+148
+84
+57
+50

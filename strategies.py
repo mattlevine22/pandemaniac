@@ -21,6 +21,29 @@ def highest_closeness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True
         return seeds[:n]
     return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
+def highest_betweenness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    seeds = [str(k[0]) for k in sorted(nx.betweenness_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
+
+def highest_load_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    seeds = [str(k[0]) for k in sorted(nx.load_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
+
+def highest_approximate_current_flow_betweenness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    CC = max(nx.connected_component_subgraphs(graph), key=len)
+    seeds = [str(k[0]) for k in sorted(nx.approximate_current_flow_betweenness_centrality(CC).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
+
+
 def highest_katz_centrality_np(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.katz_centrality_numpy(graph).items(), key=lambda x: x[1], reverse=True)]
 
@@ -108,6 +131,13 @@ def highest_pagerank(graph, n, aug_frac=AUG_FRAC, deterministic=True):
         return seeds[:n]
     return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
+def highest_eigenvector_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    seeds = [str(k[0]) for k in sorted(nx.eigenvector_centrality(graph).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
+
 def greedy_maxCover(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     my_seeds = set()
     covered_nodes = set()
@@ -166,7 +196,11 @@ def get_strats(scope, n_players=2):
             target_cliques_v2,
             secure_single_highD_with_lowD_neighbors,
             highest_pagerank,
-            greedy_maxCover
+            greedy_maxCover,
+            highest_betweenness_centrality,
+            highest_approximate_current_flow_betweenness_centrality,
+            highest_load_centrality,
+            highest_eigenvector_centrality
         ]
 
     if scope == "team":
@@ -184,7 +218,11 @@ def get_strats(scope, n_players=2):
             target_cliques_v2,
             secure_single_highD_with_lowD_neighbors,
             highest_pagerank,
-            greedy_maxCover
+            greedy_maxCover,
+            highest_betweenness_centrality,
+            highest_approximate_current_flow_betweenness_centrality,
+            highest_load_centrality,
+            highest_eigenvector_centrality
         ]
 
     if scope == "opp":
