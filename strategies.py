@@ -214,7 +214,7 @@ def get_strats(scope, n_players=2):
     if scope == "team":
         return [
             highest_degree, #did NOT beat TA_more
-            # # random,
+            # # # random,
             highest_closeness_centrality,
             highest_katz_centrality_np, #did NOT beat TA_more
             highest_information_centrality, #did NOT beat TA_more
@@ -229,7 +229,7 @@ def get_strats(scope, n_players=2):
             greedy_maxCover,
             highest_betweenness_centrality,
             highest_approximate_current_flow_betweenness_centrality,
-            highest_load_centrality
+            # highest_load_centrality
             # highest_eigenvector_centrality #did NOT beat TA_more
             # highest_closeness_vitality #VERY SLOW
         ]

@@ -17,6 +17,8 @@ scoreboard = [20, 15, 12, 9, 6, 4, 2, 1, 0, 0]
 
 def run_game(args):
     graph_nx, graph_dict, input_seeds = args
+    # with open("logs/{}.txt".format(os.getpid()), 'a') as f:
+    #     print(input_seeds, file=f)
     # logs = open("logs/{}.txt".format(os.getpid()), "w")
 
     # team_seeds = [strat(graph_nx, n_seeds) for strat in team_strats]
@@ -43,12 +45,18 @@ def run_game(args):
 #
 #     return np.array(scores).reshape((n, m))
 
+def make_seeds(args):
+    strat, graph_nx, n_seeds = args
+    return strat(graph_nx, n_seeds)
+
 def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
     # start timer
     start = time()
-
     team_strats = get_strats("team")
-    team_seeds = [strat(graph_nx, n_seeds) for strat in team_strats]
+
+    with Pool(N_PROCS) as pool:
+        team_seeds = pool.map(make_seeds, [(s, graph_nx, n_seeds) for s in team_strats])
+    # print(game_data)
     all_teams = [team for team in game_data]
 
     n_strats = len(team_strats)
@@ -68,22 +76,30 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
 
     strat_scores = {}
     strat_sums = {}
+    team_wins = {}
     # for strat in team_strats:
     #     strat_scores[strat] = {team : 0 for team in game_data}
-
+    # for i in range(n_strats):
+    #     for j in range(n_rounds):
+    #         winning_nm = max([nm for nm in scores[i*n_rounds + j]], key=lambda nm: scores[i*n_rounds + j][nm])
+    #         team_wins[winning_nm] += 1
     for i in range(n_strats):
         foo = {team: 0 for team in all_teams}
-        for k in range(n_teams):
-            for j in range(n_rounds):
+        foo_wins = {team: 0 for team in all_teams}
+        for j in range(n_rounds):
+            winning_nm = max([nm for nm in scores[i*n_rounds + j]], key=lambda nm: scores[i*n_rounds + j][nm])
+            foo_wins[winning_nm] += 1
+            for k in range(n_teams):
                 foo[all_teams[k]] += scores[i*n_rounds + j][all_teams[k]]
 
         rank = len([s for s in foo.values() if s > foo["Animaniacs"]])
         strat_sums[team_strats[i]] = foo["Animaniacs"]
         strat_scores[team_strats[i]] = scoreboard[rank]
+        team_wins[team_strats[i]] = foo_wins["Animaniacs"]
 
     print("STRATEGY SCORES")
     for strat in sorted([strat for strat in strat_scores], key=lambda s: strat_sums[s], reverse=True):
-        print(strat, strat_sums[strat], strat_scores[strat])
+        print(strat, strat_sums[strat], team_wins[strat]/50, strat_scores[strat])
 
     # strategy_scores = np.mean(scores, axis=1)
     # best_score = np.max(strategy_scores)
@@ -97,7 +113,7 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
     print()
     print("compute time:", time() - start, '\n\n')
 
-    return
+    return "fake plastic trees please"
 
 # def compute_seeds(graph_nx, graph_dict, n_players, n_seeds):
 #     start = time()
