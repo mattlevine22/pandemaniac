@@ -24,7 +24,7 @@ def download(game_name="2.5.1"):
 
     b.retrieve(SUBMIT_URL.format(game_name), GRAPH_FILE.format(game_name))
 
-def download_game_data(day, game_name):
+def download_game_data(game_name):
     b = mechanize.Browser()
     b.set_handle_robots(False)
 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
         COMPUTE_URL = "http://35.235.67.44:" + PORT + '/'
 
     download(game_name)
-    download_training(game_name)
+    download_game_data(game_name)
 
     n_players, n_seeds, graph_id = [int(val) for val in game_name.split(".")]
     train_best_strategy(COMPUTE_URL, game_name, n_players, n_seeds)

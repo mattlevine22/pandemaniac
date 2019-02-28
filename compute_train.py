@@ -44,6 +44,9 @@ def run_game(args):
 #     return np.array(scores).reshape((n, m))
 
 def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
+    # start timer
+    start = time()
+
     team_strats = get_strats("team")
     team_seeds = [strat(graph_nx, n_seeds) for strat in team_strats]
     all_teams = [team for team in game_data]
@@ -55,7 +58,7 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
     args = []
     for i in range(n_strats):
         for j in range(n_rounds):
-            single_game_seeds = {team : seeds[j] for team, seeds in game_data}
+            single_game_seeds = {team : seeds[j] for team, seeds in game_data.items()}
             single_game_seeds["Animaniacs"] = team_seeds[i]
             args.append((graph_nx, graph_dict, single_game_seeds))
 
@@ -64,6 +67,7 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
         scores = pool.map(run_game, args)
 
     strat_scores = {}
+    strat_sums = {}
     # for strat in team_strats:
     #     strat_scores[strat] = {team : 0 for team in game_data}
 
@@ -71,14 +75,15 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
         foo = {team: 0 for team in all_teams}
         for k in range(n_teams):
             for j in range(n_rounds):
-                foo[all_teams[k]] += scores[i, j][all_teams[k]]
+                foo[all_teams[k]] += scores[i*n_rounds + j][all_teams[k]]
 
         rank = len([s for s in foo.values() if s > foo["Animaniacs"]])
+        strat_sums[team_strats[i]] = foo["Animaniacs"]
         strat_scores[team_strats[i]] = scoreboard[rank]
 
     print("STRATEGY SCORES")
-    for strat in sorted([strat for strat in strat_scores], key=lambda s: strat_scores[s]):
-        print(strat, strat_scores[strat])
+    for strat in sorted([strat for strat in strat_scores], key=lambda s: strat_sums[s], reverse=True):
+        print(strat, strat_sums[strat], strat_scores[strat])
 
     # strategy_scores = np.mean(scores, axis=1)
     # best_score = np.max(strategy_scores)
@@ -132,11 +137,11 @@ class ComputeHandler(BaseHTTPRequestHandler):
     def graph_and_game_data_from_body(self):
         body = json.loads(self.rfile.read(int(self.headers.get('Content-Length'))))
         graph_nx, graph_dict = graph_from_string(body["graph"])
-        game_data = body["game_data"]
+        game_data = json.loads(body["game_data"])
         n_players, n_seeds = int(body["n_players"]), int(body["n_seeds"])
 
         print("game specs:", len(graph_dict), n_players, n_seeds)
-        return graph_nx, graph_dict, n_players, n_seeds
+        return graph_nx, graph_dict, n_players, n_seeds, game_data
 
 
     def respond(self, opts):
@@ -148,7 +153,7 @@ class ComputeHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        seeds = train_strategies(*self.graph_and_game_from_body())
+        seeds = train_strategies(*self.graph_and_game_data_from_body())
         # seeds = compute_seeds(*self.game_from_body())
 
         return seeds.encode("utf-8")
