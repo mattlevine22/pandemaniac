@@ -182,8 +182,8 @@ def secure_single_highD_with_lowD_neighbors(graph, n, n_neighbors=2):
             if len(my_seeds) == n:
                 return [str(s) for s in my_seeds]
 
-# def ta_strat(graph, n):
-#     return ["49", "59", "57", "148", "135", "10", "107", "77"]
+def ta_more(graph, n):
+    return ["11", "193", "5", "201", "2", "93", "59", "58", "245", "6", "40", "213"]
 
 def ta_strat(graph, n):
     return highest_degree(graph, int(.8 * n))
@@ -213,31 +213,32 @@ def get_strats(scope, n_players=2):
 
     if scope == "team":
         return [
-            highest_degree,
-            # random,
+            highest_degree, #did NOT beat TA_more
+            # # random,
             highest_closeness_centrality,
-            highest_katz_centrality_np,
-            highest_information_centrality,
-            highest_subgraph_centrality,
+            highest_katz_centrality_np, #did NOT beat TA_more
+            highest_information_centrality, #did NOT beat TA_more
+            highest_subgraph_centrality, #did NOT beat TA_more
             swarm_high_degrees,
             # highest_generalized_degree,
-            # highest_second_order_centrality,
-            # target_cliques_v1,
-            # target_cliques_v2,
-            secure_single_highD_with_lowD_neighbors,
+            # highest_second_order_centrality, #did NOT beat TA_more
+            # target_cliques_v1, #did NOT beat TA_more
+            # target_cliques_v2, #did NOT beat TA_more
+            # secure_single_highD_with_lowD_neighbors, #did NOT beat TA_more
             highest_pagerank,
             greedy_maxCover,
             highest_betweenness_centrality,
             highest_approximate_current_flow_betweenness_centrality,
             highest_load_centrality
-            # highest_eigenvector_centrality,
-            # highest_closeness_vitality
+            # highest_eigenvector_centrality #did NOT beat TA_more
+            # highest_closeness_vitality #VERY SLOW
         ]
 
     if scope == "opp":
         return [
             highest_degree
             # ta_strat
+            # ta_more
             # random,
             # highest_closeness_centrality,
             # highest_katz_centrality_np,
