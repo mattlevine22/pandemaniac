@@ -204,3 +204,12 @@ compute time: 39.82943415641785
 1237
 1369
 1009
+
+
+########### Wed Feb 27 night #########
+TA_more: highest_betweenness_centrality
+TA_fewer: highest_degree
+TA_degree: highest_information_centrality
+
+8.25.2 and 8.40.2: 100% greedy_maxCover
+EVERTHING ELSE: 80% highest_betweenness_centrality, 20% greedy_maxCover
