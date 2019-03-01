@@ -99,24 +99,23 @@ compute time: 7.534872055053711
 6
 40
 STRATEGY SCORES
-<function highest_betweenness_centrality at 0x10da0bf28> 15183 0.94 20
-<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 15087 0.96 20
-<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 14764 0.92 20
-<function highest_closeness_centrality at 0x10da0be18> 14351 0.84 20
-<function greedy_maxCover at 0x10da43510> 12845 0.82 20
-<function highest_pagerank at 0x10da43400> 11087 0.58 15
-<function highest_subgraph_centrality at 0x10da430d0> 8579 0.0 15
-<function highest_eigenvector_centrality at 0x10da43488> 8579 0.0 15
-<function target_cliques_v1 at 0x10da43268> 7127 0.0 15
-<function highest_degree at 0x10da0bd90> 5569 0.0 15
-<function highest_information_centrality at 0x10da43048> 5569 0.0 15
-<function swarm_high_degrees at 0x10da43378> 5479 0.16 15
-<function target_cliques_v2 at 0x10da432f0> 2576 0.0 15
-<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 321 0.0 15
-<function highest_katz_centrality_np at 0x10da04f28> 65 0.0 15
+<function highest_betweenness_centrality at 0x11018ef28> 15183 0.94 20
+<function highest_current_flow_betweenness_centrality at 0x110187ea0> 14764 0.92 20
+<function highest_closeness_centrality at 0x11018ee18> 14351 0.84 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x11018e1e0> 14188 0.86 20
+<function greedy_maxCover at 0x1101b9510> 12845 0.82 20
+<function highest_pagerank at 0x1101b9400> 11087 0.58 15
+<function highest_subgraph_centrality at 0x1101b90d0> 8579 0.0 15
+<function highest_eigenvector_centrality at 0x1101b9488> 8579 0.0 15
+<function target_cliques_v1 at 0x1101b9268> 6393 0.0 15
+<function highest_degree at 0x11018ed90> 5569 0.0 15
+<function highest_information_centrality at 0x1101b9048> 5569 0.0 15
+<function swarm_high_degrees at 0x1101b9378> 5479 0.16 15
+<function target_cliques_v2 at 0x1101b92f0> 1300 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x1101b9598> 321 0.0 15
+<function highest_katz_centrality_np at 0x110187f28> 65 0.0 15
 
-compute time: 38.76331400871277
-
+compute time: 31.947443962097168
 
 4.5.3:
 127.0.0.1 - - [26/Feb/2019 23:09:15] "POST / HTTP/1.1" 200 -
@@ -228,23 +227,23 @@ compute time: 17.354840993881226
 146
 
 STRATEGY SCORES
-<function target_cliques_v1 at 0x10da43268> 16476 0.38 15
-<function target_cliques_v2 at 0x10da432f0> 10533 0.24 15
-<function greedy_maxCover at 0x10da43510> 8856 0.16 12
-<function highest_katz_centrality_np at 0x10da04f28> 807 0.0 9
-<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 625 0.0 9
-<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 575 0.0 12
-<function highest_betweenness_centrality at 0x10da0bf28> 420 0.0 12
-<function highest_degree at 0x10da0bd90> 155 0.0 2
-<function highest_pagerank at 0x10da43400> 114 0.0 4
-<function highest_subgraph_centrality at 0x10da430d0> 71 0.0 1
-<function highest_eigenvector_centrality at 0x10da43488> 71 0.0 1
-<function highest_closeness_centrality at 0x10da0be18> 0 0.0 2
-<function highest_information_centrality at 0x10da43048> 0 0.0 1
-<function swarm_high_degrees at 0x10da43378> 0 0.0 1
-<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 0 0.0 1
+<function target_cliques_v1 at 0x1101b9268> 13131 0.34 15
+<function target_cliques_v2 at 0x1101b92f0> 8322 0.22 15
+<function greedy_maxCover at 0x1101b9510> 8856 0.16 12
+<function highest_current_flow_betweenness_centrality at 0x110187ea0> 575 0.0 12
+<function highest_betweenness_centrality at 0x11018ef28> 420 0.0 12
+<function highest_approximate_current_flow_betweenness_centrality at 0x11018e1e0> 1017 0.0 9
+<function highest_katz_centrality_np at 0x110187f28> 807 0.0 9
+<function highest_pagerank at 0x1101b9400> 114 0.0 4
+<function highest_degree at 0x11018ed90> 155 0.0 2
+<function highest_closeness_centrality at 0x11018ee18> 0 0.0 2
+<function highest_subgraph_centrality at 0x1101b90d0> 71 0.0 1
+<function highest_eigenvector_centrality at 0x1101b9488> 71 0.0 1
+<function highest_information_centrality at 0x1101b9048> 0 0.0 1
+<function swarm_high_degrees at 0x1101b9378> 0 0.0 1
+<function secure_single_highD_with_lowD_neighbors at 0x1101b9598> 0 0.0 1
 
-compute time: 165.13938999176025
+compute time: 161.2280478477478
 
 
 8.30.1:
@@ -361,7 +360,7 @@ STRATEGY SCORES
 
 compute time: 2.9027340412139893
 
-4.5.3:
+4.5.4:
 STRATEGY SCORES
 <function greedy_maxCover at 0x10da43510> 2354 0.0 15
 <function target_cliques_v2 at 0x10da432f0> 2288 0.06 15
@@ -500,4 +499,43 @@ STRATEGY SCORES
 compute time: 608.2687621116638
 
 
+### THURSDAY NIGHT SUBMISSIONS
+2.10.14 (TA_degreee)
+127.0.0.1 - - [28/Feb/2019 23:11:34] "POST / HTTP/1.1" 200 -
+game specs: 500 2 10
+<function highest_pagerank at 0x111ae7400>
+best score: 0.582
+compute time: 15.357892036437988
+50
+1
+121
+34
+123
+4
+89
+27
+141
+233
+
+2.10.24 (TA_fewer):
+high_degree
+
+2.5.5:
+greedy_maxCover (matt decided, cuz it was best choice overall for 2.5.4/2.5.3)
+30
+0
+35
+1
+24
+
+4.5.5
+greedy_maxCover
+
+4.10.5
+Katz Centrality
+
+2.10.34 (TA_more):
+50% greedy_maxCover, 50% highest betweenness centrality
+
+greedy_maxCover for everything else
 
