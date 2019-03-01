@@ -26,3 +26,4 @@ __pycache__/
 .keras/
 models/
 tame
+game_data
