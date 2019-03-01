@@ -1,5 +1,34 @@
 NOTES
 
+2.5.3:
+127.0.0.1 - - [26/Feb/2019 23:06:23] "POST / HTTP/1.1" 200 -
+game specs: 100 2 5
+<function highest_closeness_centrality at 0x11930a0d0>
+best score: 0.58
+compute time: 0.41161012649536133
+15
+11
+9
+23
+35
+
+RETROSPECTIVE STRATEGY SCORES
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 4545 1.0 20
+<function highest_betweenness_centrality at 0x10da0bf28> 4457 1.0 20
+<function highest_degree at 0x10da0bd90> 4364 1.0 20
+<function highest_closeness_centrality at 0x10da0be18> 4364 1.0 20
+<function highest_information_centrality at 0x10da43048> 4364 1.0 20
+<function swarm_high_degrees at 0x10da43378> 4364 1.0 20
+<function highest_pagerank at 0x10da43400> 4269 1.0 20
+<function greedy_maxCover at 0x10da43510> 4256 1.0 20
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 4252 0.96 20
+<function highest_katz_centrality_np at 0x10da04f28> 3609 1.0 20
+<function highest_subgraph_centrality at 0x10da430d0> 3609 1.0 20
+<function highest_eigenvector_centrality at 0x10da43488> 3609 1.0 20
+<function target_cliques_v2 at 0x10da432f0> 2347 0.48 15
+<function target_cliques_v1 at 0x10da43268> 2146 0.4 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 1169 0.06 15
+
 2.10.12:
 127.0.0.1 - - [26/Feb/2019 22:57:48] "POST / HTTP/1.1" 200 -
 game specs: 500 2 10
@@ -17,8 +46,43 @@ compute time: 11.945636987686157
 7
 106
 
+STRATEGY SCORES
+<function highest_information_centrality at 0x10da43048> 24650 1.0 20
+<function highest_closeness_centrality at 0x10da0be18> 12550 1.0 20
+<function highest_betweenness_centrality at 0x10da0bf28> 12500 1.0 20
+<function highest_pagerank at 0x10da43400> 12450 0.0 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 12450 0.0 15
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 12450 0.0 15
+<function greedy_maxCover at 0x10da43510> 12300 0.0 15
+<function highest_subgraph_centrality at 0x10da430d0> 12150 0.0 15
+<function highest_eigenvector_centrality at 0x10da43488> 12150 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 650 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 500 0.0 15
+<function target_cliques_v1 at 0x10da43268> 300 0.0 15
+<function target_cliques_v2 at 0x10da432f0> 150 0.0 15
+<function highest_degree at 0x10da0bd90> 0 0.0 20
+<function swarm_high_degrees at 0x10da43378> 0 0.0 20
 
-2.10.32:
+2.10.22 (TA_fewer)
+STRATEGY SCORES
+<function highest_degree at 0x10da0bd90> 25000 1.0 20
+<function highest_closeness_centrality at 0x10da0be18> 25000 1.0 20
+<function highest_information_centrality at 0x10da43048> 25000 1.0 20
+<function swarm_high_degrees at 0x10da43378> 25000 1.0 20
+<function highest_pagerank at 0x10da43400> 25000 1.0 20
+<function highest_subgraph_centrality at 0x10da430d0> 24700 1.0 20
+<function highest_eigenvector_centrality at 0x10da43488> 24700 1.0 20
+<function target_cliques_v1 at 0x10da43268> 24400 1.0 20
+<function highest_betweenness_centrality at 0x10da0bf28> 24250 1.0 20
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 24200 1.0 20
+<function target_cliques_v2 at 0x10da432f0> 13750 1.0 20
+<function greedy_maxCover at 0x10da43510> 13750 1.0 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 1200 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 100 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 0 0.0 15
+
+
+2.10.32: (TA_more)
 127.0.0.1 - - [26/Feb/2019 23:00:13] "POST / HTTP/1.1" 200 -
 game specs: 500 2 10
 <function swarm_high_degrees at 0x11612e1e0>
@@ -34,18 +98,25 @@ compute time: 7.534872055053711
 213
 6
 40
+STRATEGY SCORES
+<function highest_betweenness_centrality at 0x10da0bf28> 15183 0.94 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 15087 0.96 20
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 14764 0.92 20
+<function highest_closeness_centrality at 0x10da0be18> 14351 0.84 20
+<function greedy_maxCover at 0x10da43510> 12845 0.82 20
+<function highest_pagerank at 0x10da43400> 11087 0.58 15
+<function highest_subgraph_centrality at 0x10da430d0> 8579 0.0 15
+<function highest_eigenvector_centrality at 0x10da43488> 8579 0.0 15
+<function target_cliques_v1 at 0x10da43268> 7127 0.0 15
+<function highest_degree at 0x10da0bd90> 5569 0.0 15
+<function highest_information_centrality at 0x10da43048> 5569 0.0 15
+<function swarm_high_degrees at 0x10da43378> 5479 0.16 15
+<function target_cliques_v2 at 0x10da432f0> 2576 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 321 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 65 0.0 15
 
-2.5.3:
-127.0.0.1 - - [26/Feb/2019 23:06:23] "POST / HTTP/1.1" 200 -
-game specs: 100 2 5
-<function highest_closeness_centrality at 0x11930a0d0>
-best score: 0.58
-compute time: 0.41161012649536133
-15
-11
-9
-23
-35
+compute time: 38.76331400871277
+
 
 4.5.3:
 127.0.0.1 - - [26/Feb/2019 23:09:15] "POST / HTTP/1.1" 200 -
@@ -58,6 +129,24 @@ compute time: 0.8694698810577393
 77
 33
 21
+
+RETROSPECTIVE STRATEGY SCORES
+<function highest_katz_centrality_np at 0x10da04f28> 3574 0.48 20
+<function highest_betweenness_centrality at 0x10da0bf28> 2869 0.34 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 2805 0.22 15
+<function target_cliques_v2 at 0x10da432f0> 2619 0.06 15
+<function highest_closeness_centrality at 0x10da0be18> 2458 0.24 12
+<function swarm_high_degrees at 0x10da43378> 2458 0.24 12
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 2458 0.24 12
+<function greedy_maxCover at 0x10da43510> 2140 0.16 15
+<function target_cliques_v1 at 0x10da43268> 1250 0.08 12
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 188 0.0 9
+<function highest_subgraph_centrality at 0x10da430d0> 87 0.0 9
+<function highest_eigenvector_centrality at 0x10da43488> 87 0.0 9
+<function highest_degree at 0x10da0bd90> 52 0.0 9
+<function highest_information_centrality at 0x10da43048> 52 0.0 9
+<function highest_pagerank at 0x10da43400> 52 0.0 9
+
 
 4.10.3:
 127.0.0.1 - - [26/Feb/2019 23:10:45] "POST / HTTP/1.1" 200 -
@@ -75,6 +164,23 @@ compute time: 9.127954006195068
 84
 57
 50
+
+STRATEGY SCORES
+<function greedy_maxCover at 0x10da43510> 6929 0.0 15
+<function highest_betweenness_centrality at 0x10da0bf28> 6584 0.0 15
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 6584 0.0 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 5651 0.0 15
+<function highest_information_centrality at 0x10da43048> 3641 0.0 15
+<function highest_degree at 0x10da0bd90> 3349 0.0 15
+<function swarm_high_degrees at 0x10da43378> 3349 0.0 15
+<function highest_pagerank at 0x10da43400> 3106 0.0 15
+<function target_cliques_v1 at 0x10da43268> 1019 0.0 15
+<function target_cliques_v2 at 0x10da432f0> 886 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 399 0.0 12
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 338 0.0 12
+<function highest_subgraph_centrality at 0x10da430d0> 54 0.0 12
+<function highest_eigenvector_centrality at 0x10da43488> 54 0.0 12
+<function highest_closeness_centrality at 0x10da0be18> 40 0.0 12
 
 
 8.20.4:
@@ -120,6 +226,26 @@ compute time: 17.354840993881226
 51
 135
 146
+
+STRATEGY SCORES
+<function target_cliques_v1 at 0x10da43268> 16476 0.38 15
+<function target_cliques_v2 at 0x10da432f0> 10533 0.24 15
+<function greedy_maxCover at 0x10da43510> 8856 0.16 12
+<function highest_katz_centrality_np at 0x10da04f28> 807 0.0 9
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 625 0.0 9
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 575 0.0 12
+<function highest_betweenness_centrality at 0x10da0bf28> 420 0.0 12
+<function highest_degree at 0x10da0bd90> 155 0.0 2
+<function highest_pagerank at 0x10da43400> 114 0.0 4
+<function highest_subgraph_centrality at 0x10da430d0> 71 0.0 1
+<function highest_eigenvector_centrality at 0x10da43488> 71 0.0 1
+<function highest_closeness_centrality at 0x10da0be18> 0 0.0 2
+<function highest_information_centrality at 0x10da43048> 0 0.0 1
+<function swarm_high_degrees at 0x10da43378> 0 0.0 1
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 0 0.0 1
+
+compute time: 165.13938999176025
+
 
 8.30.1:
 127.0.0.1 - - [26/Feb/2019 23:51:08] "POST / HTTP/1.1" 200 -
@@ -213,3 +339,165 @@ TA_degree: highest_information_centrality
 
 8.25.2 and 8.40.2: 100% greedy_maxCover
 EVERTHING ELSE: 80% highest_betweenness_centrality, 20% greedy_maxCover
+
+
+2.5.4:
+STRATEGY SCORES
+<function greedy_maxCover at 0x10da43510> 4000 1.0 20
+<function highest_closeness_centrality at 0x10da0be18> 3350 1.0 20
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 2950 1.0 20
+<function highest_katz_centrality_np at 0x10da04f28> 2700 1.0 20
+<function highest_subgraph_centrality at 0x10da430d0> 2700 1.0 20
+<function highest_eigenvector_centrality at 0x10da43488> 2700 1.0 20
+<function highest_betweenness_centrality at 0x10da0bf28> 2550 1.0 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 2550 1.0 20
+<function highest_degree at 0x10da0bd90> 2450 0.0 15
+<function highest_information_centrality at 0x10da43048> 2450 0.0 15
+<function swarm_high_degrees at 0x10da43378> 2450 0.0 15
+<function highest_pagerank at 0x10da43400> 2450 0.0 15
+<function target_cliques_v1 at 0x10da43268> 650 0.0 15
+<function target_cliques_v2 at 0x10da432f0> 650 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 650 0.0 15
+
+compute time: 2.9027340412139893
+
+4.5.3:
+STRATEGY SCORES
+<function greedy_maxCover at 0x10da43510> 2354 0.0 15
+<function target_cliques_v2 at 0x10da432f0> 2288 0.06 15
+<function highest_betweenness_centrality at 0x10da0bf28> 2150 0.0 15
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 2150 0.0 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 2123 0.0 15
+<function highest_pagerank at 0x10da43400> 2090 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 2000 0.0 15
+<function highest_degree at 0x10da0bd90> 1984 0.0 15
+<function highest_subgraph_centrality at 0x10da430d0> 1348 0.0 15
+<function swarm_high_degrees at 0x10da43378> 878 0.0 12
+<function highest_eigenvector_centrality at 0x10da43488> 878 0.0 12
+<function target_cliques_v1 at 0x10da43268> 370 0.0 9
+<function highest_closeness_centrality at 0x10da0be18> 111 0.0 12
+<function highest_information_centrality at 0x10da43048> 106 0.0 12
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 79 0.0 9
+
+compute time: 9.247700929641724
+
+4.10.4:
+STRATEGY SCORES
+<function highest_katz_centrality_np at 0x10da04f28> 10237 0.32 15
+<function target_cliques_v2 at 0x10da432f0> 7274 0.02 15
+<function target_cliques_v1 at 0x10da43268> 5354 0.02 15
+<function greedy_maxCover at 0x10da43510> 2367 0.08 12
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 724 0.02 12
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 601 0.0 12
+<function highest_betweenness_centrality at 0x10da0bf28> 182 0.0 12
+<function highest_subgraph_centrality at 0x10da430d0> 109 0.0 9
+<function highest_eigenvector_centrality at 0x10da43488> 109 0.0 9
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 34 0.0 9
+<function highest_closeness_centrality at 0x10da0be18> 19 0.0 9
+<function highest_degree at 0x10da0bd90> 2 0.0 9
+<function highest_information_centrality at 0x10da43048> 2 0.0 9
+<function swarm_high_degrees at 0x10da43378> 2 0.0 9
+<function highest_pagerank at 0x10da43400> 2 0.0 9
+compute time: 36.52154183387756
+
+2.10.13:
+STRATEGY SCORES
+<function highest_closeness_centrality at 0x10da0be18> 15650 1.0 20
+<function highest_information_centrality at 0x10da43048> 15650 1.0 20
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 14400 1.0 20
+<function highest_pagerank at 0x10da43400> 14100 1.0 20
+<function highest_betweenness_centrality at 0x10da0bf28> 9500 0.0 15
+<function highest_subgraph_centrality at 0x10da430d0> 8950 0.0 15
+<function highest_eigenvector_centrality at 0x10da43488> 8950 0.0 15
+<function target_cliques_v1 at 0x10da43268> 8100 0.0 15
+<function target_cliques_v2 at 0x10da432f0> 7750 0.0 15
+<function greedy_maxCover at 0x10da43510> 2400 0.0 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 1350 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 100 0.0 15
+<function highest_degree at 0x10da0bd90> 0 0.0 20
+<function swarm_high_degrees at 0x10da43378> 0 0.0 20
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 0 0.0 15
+compute time: 25.758119821548462
+
+2.10.23: (TA_fewer)
+STRATEGY SCORES
+<function highest_pagerank at 0x10da43400> 25000 1.0 20
+<function highest_betweenness_centrality at 0x10da0bf28> 25000 1.0 20
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 25000 1.0 20
+<function highest_degree at 0x10da0bd90> 24950 1.0 20
+<function swarm_high_degrees at 0x10da43378> 24950 1.0 20
+<function highest_closeness_centrality at 0x10da0be18> 24600 1.0 20
+<function highest_information_centrality at 0x10da43048> 24400 1.0 20
+<function highest_subgraph_centrality at 0x10da430d0> 24300 1.0 20
+<function highest_eigenvector_centrality at 0x10da43488> 24300 1.0 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 24200 1.0 20
+<function target_cliques_v1 at 0x10da43268> 23750 1.0 20
+<function target_cliques_v2 at 0x10da432f0> 8650 0.0 15
+<function greedy_maxCover at 0x10da43510> 1000 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 150 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 50 0.0 15
+
+compute time: 40.49083709716797
+
+2.10.33: (TA_more)
+STRATEGY SCORES
+<function highest_subgraph_centrality at 0x10da430d0> 3781 0.0 15
+<function highest_eigenvector_centrality at 0x10da43488> 3781 0.0 15
+<function highest_closeness_centrality at 0x10da0be18> 2035 0.0 15
+<function greedy_maxCover at 0x10da43510> 1135 0.0 15
+<function highest_betweenness_centrality at 0x10da0bf28> 1132 0.0 15
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 1132 0.0 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 1019 0.0 15
+<function highest_pagerank at 0x10da43400> 946 0.0 15
+<function target_cliques_v1 at 0x10da43268> 817 0.0 15
+<function target_cliques_v2 at 0x10da432f0> 817 0.0 15
+<function highest_degree at 0x10da0bd90> 624 0.0 15
+<function highest_information_centrality at 0x10da43048> 624 0.0 15
+<function swarm_high_degrees at 0x10da43378> 624 0.0 15
+<function highest_katz_centrality_np at 0x10da04f28> 557 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 2 0.0 15
+
+compute time: 31.391704082489014
+
+8.10.4:
+STRATEGY SCORES
+<function target_cliques_v2 at 0x10da432f0> 3030 0.02 9
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 1945 0.02 12
+<function highest_katz_centrality_np at 0x10da04f28> 791 0.0 9
+<function target_cliques_v1 at 0x10da43268> 604 0.0 12
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 300 0.0 6
+<function greedy_maxCover at 0x10da43510> 262 0.0 6
+<function highest_betweenness_centrality at 0x10da0bf28> 137 0.0 2
+<function highest_pagerank at 0x10da43400> 82 0.0 4
+<function highest_degree at 0x10da0bd90> 60 0.0 2
+<function highest_information_centrality at 0x10da43048> 60 0.0 2
+<function swarm_high_degrees at 0x10da43378> 60 0.0 2
+<function highest_closeness_centrality at 0x10da0be18> 52 0.0 2
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 19 0.0 1
+<function highest_subgraph_centrality at 0x10da430d0> 5 0.0 1
+<function highest_eigenvector_centrality at 0x10da43488> 5 0.0 1
+
+compute time: 176.3683362007141
+
+8.20.5:
+STRATEGY SCORES
+<function highest_approximate_current_flow_betweenness_centrality at 0x10da0b1e0> 15983 0.0 15
+<function greedy_maxCover at 0x10da43510> 11964 0.0 12
+<function target_cliques_v1 at 0x10da43268> 6647 0.0 9
+<function highest_current_flow_betweenness_centrality at 0x10da04ea0> 5520 0.0 9
+<function target_cliques_v2 at 0x10da432f0> 4840 0.0 9
+<function highest_betweenness_centrality at 0x10da0bf28> 4666 0.0 9
+<function highest_katz_centrality_np at 0x10da04f28> 4108 0.0 6
+<function secure_single_highD_with_lowD_neighbors at 0x10da43598> 485 0.0 4
+<function highest_closeness_centrality at 0x10da0be18> 347 0.0 4
+<function highest_subgraph_centrality at 0x10da430d0> 12 0.0 2
+<function highest_eigenvector_centrality at 0x10da43488> 12 0.0 2
+<function highest_degree at 0x10da0bd90> 2 0.0 1
+<function highest_information_centrality at 0x10da43048> 2 0.0 1
+<function swarm_high_degrees at 0x10da43378> 2 0.0 1
+<function highest_pagerank at 0x10da43400> 1 0.0 1
+
+compute time: 608.2687621116638
+
+
+

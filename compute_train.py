@@ -75,6 +75,7 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
         scores = pool.map(run_game, args)
 
     strat_scores = {}
+    all_strat_sums = {}
     strat_sums = {}
     team_wins = {}
     # for strat in team_strats:
@@ -96,10 +97,12 @@ def train_strategies(graph_nx, graph_dict, n_players, n_seeds, game_data):
         strat_sums[team_strats[i]] = foo["Animaniacs"]
         strat_scores[team_strats[i]] = scoreboard[rank]
         team_wins[team_strats[i]] = foo_wins["Animaniacs"]
+        all_strat_sums[team_strats[i]] = {team: foo[team] for team in all_teams}
 
     print("STRATEGY SCORES")
     for strat in sorted([strat for strat in strat_scores], key=lambda s: strat_sums[s], reverse=True):
         print(strat, strat_sums[strat], team_wins[strat]/50, strat_scores[strat])
+        print(all_strat_sums[strat])
 
     # strategy_scores = np.mean(scores, axis=1)
     # best_score = np.max(strategy_scores)

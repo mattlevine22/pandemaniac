@@ -50,6 +50,13 @@ def highest_approximate_current_flow_betweenness_centrality(graph, n, aug_frac=A
         return seeds[:n]
     return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
+def highest_current_flow_betweenness_centrality(graph, n, aug_frac=AUG_FRAC, deterministic=True):
+    CC = max(nx.connected_component_subgraphs(graph), key=len)
+    seeds = [str(k[0]) for k in sorted(nx.current_flow_betweenness_centrality(CC).items(), key=lambda x: x[1], reverse=True)]
+
+    if deterministic:
+        return seeds[:n]
+    return list(np.random.choice(seeds[:int(aug_frac * n)], n, replace=False))
 
 def highest_katz_centrality_np(graph, n, aug_frac=AUG_FRAC, deterministic=True):
     seeds = [str(k[0]) for k in sorted(nx.katz_centrality_numpy(graph).items(), key=lambda x: x[1], reverse=True)]
@@ -213,24 +220,25 @@ def get_strats(scope, n_players=2):
 
     if scope == "team":
         return [
-            # highest_degree, #did NOT beat TA_more
+            highest_degree, #did NOT beat TA_more
             # # # # random,
-            # highest_closeness_centrality,
-            # highest_katz_centrality_np, #did NOT beat TA_more
-            # highest_information_centrality, #did NOT beat TA_more
-            # highest_subgraph_centrality, #did NOT beat TA_more
-            # swarm_high_degrees,
+            highest_closeness_centrality,
+            highest_katz_centrality_np, #did NOT beat TA_more
+            highest_information_centrality, #did NOT beat TA_more
+            highest_subgraph_centrality, #did NOT beat TA_more
+            swarm_high_degrees,
             # highest_generalized_degree,
             # highest_second_order_centrality, #did NOT beat TA_more
-            # target_cliques_v1, #did NOT beat TA_more
-            # target_cliques_v2, #did NOT beat TA_more
-            # secure_single_highD_with_lowD_neighbors, #did NOT beat TA_more
-            # highest_pagerank,
-            # greedy_maxCover,
-            highest_betweenness_centrality
-            # highest_approximate_current_flow_betweenness_centrality,
-            # highest_load_centrality
-            # highest_eigenvector_centrality #did NOT beat TA_more
+            target_cliques_v1, #did NOT beat TA_more
+            target_cliques_v2, #did NOT beat TA_more
+            secure_single_highD_with_lowD_neighbors, #did NOT beat TA_more
+            highest_pagerank,
+            greedy_maxCover,
+            highest_betweenness_centrality,
+            highest_approximate_current_flow_betweenness_centrality,
+            highest_current_flow_betweenness_centrality,
+            # highest_load_centrality,
+            highest_eigenvector_centrality #did NOT beat TA_more
             # highest_closeness_vitality #VERY SLOW
         ]
 
