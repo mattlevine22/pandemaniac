@@ -268,13 +268,13 @@ def get_strats(scope, n_players=2):
             # target_cliques_v2, #did NOT beat TA_more
             # secure_single_highD_with_lowD_neighbors, #did NOT beat TA_more
             # highest_pagerank,
-            greedy_maxCover,
-            # greedy_maxCover_without_highest_degree,
-            greedy_maxCover_without_1_highest_degree,
-            greedy_maxCover_without_quarter_highest_degree,
-            greedy_maxCover_without_half_highest_degree,
-            greedy_maxCover_without_threequarters_highest_degree,
-            greedy_maxCover_without_all_highest_degree
+            # greedy_maxCover,
+            greedy_maxCover_without_highest_degree
+            # greedy_maxCover_without_1_highest_degree,
+            # greedy_maxCover_without_quarter_highest_degree,
+            # greedy_maxCover_without_half_highest_degree,
+            # greedy_maxCover_without_threequarters_highest_degree,
+            # greedy_maxCover_without_all_highest_degree
             # highest_betweenness_centrality,
             # highest_approximate_current_flow_betweenness_centrality,
             # highest_current_flow_betweenness_centrality,
