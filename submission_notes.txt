@@ -527,15 +527,165 @@ greedy_maxCover (matt decided, cuz it was best choice overall for 2.5.4/2.5.3)
 35
 1
 24
+STRATEGY SCORES
+<function highest_degree at 0x112541d90> 2550 1.0 20
+<function highest_pagerank at 0x112571400> 2450 1.0 20
+<function highest_current_flow_betweenness_centrality at 0x11253bea0> 2050 0.0 15
+<function highest_katz_centrality_np at 0x11253bf28> 2000 0.0 15
+<function highest_subgraph_centrality at 0x1125710d0> 2000 0.0 15
+<function greedy_maxCover at 0x112571510> 2000 0.0 15
+<function highest_eigenvector_centrality at 0x112571488> 2000 0.0 15
+<function highest_closeness_centrality at 0x112541e18> 1900 0.0 15
+<function swarm_high_degrees at 0x112571378> 1800 0.0 15
+<function highest_information_centrality at 0x112571048> 1750 0.0 15
+<function highest_betweenness_centrality at 0x112541f28> 1550 0.0 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x1125411e0> 1400 0.0 15
+mix_3 1176 0.02 15
+mix_2 1172 0.0 15
+mix_7 1123 0.0 15
+mix_8 1096 0.02 15
+mix_6 1016 0.0 15
+mix_4 1012 0.0 15
+mix_9 1001 0.0 15
+mix_0 989 0.0 15
+mix_1 970 0.0 15
+mix_5 947 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x112571598> 850 0.0 15
+<function target_cliques_v2 at 0x1125712f0> 700 0.0 15
+<function target_cliques_v1 at 0x112571268> 300 0.0 15
+
+compute time: 6.447041988372803
+
+
 
 4.5.5
 greedy_maxCover
+STRATEGY SCORES
+<function highest_current_flow_betweenness_centrality at 0x11253bea0> 7007 0.82 20
+<function greedy_maxCover at 0x112571510> 6975 0.8 20
+<function highest_degree at 0x112541d90> 6923 0.76 20
+<function swarm_high_degrees at 0x112571378> 6923 0.76 20
+<function highest_pagerank at 0x112571400> 6923 0.76 20
+<function highest_information_centrality at 0x112571048> 6243 0.74 20
+<function highest_subgraph_centrality at 0x1125710d0> 6004 0.7 20
+<function highest_eigenvector_centrality at 0x112571488> 6004 0.7 20
+<function highest_betweenness_centrality at 0x112541f28> 5968 0.66 20
+<function highest_closeness_centrality at 0x112541e18> 5713 0.68 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x1125411e0> 3012 0.38 15
+<function target_cliques_v1 at 0x112571268> 2746 0.28 15
+<function highest_katz_centrality_np at 0x11253bf28> 731 0.0 15
+<function target_cliques_v2 at 0x1125712f0> 1986 0.24 12
+mix_2 1632 0.12 12
+mix_3 1470 0.1 12
+mix_7 1417 0.12 12
+mix_6 1384 0.1 12
+mix_9 1380 0.08 12
+mix_0 1351 0.08 12
+mix_8 1350 0.08 12
+mix_5 1271 0.08 12
+mix_4 1260 0.06 12
+mix_1 1074 0.04 12
+<function secure_single_highD_with_lowD_neighbors at 0x112571598> 344 0.0 9
+
+compute time: 24.60850501060486
+
 
 4.10.5
 Katz Centrality
 
+STRATEGY SCORES
+<function highest_degree at 0x112be5d90> 17922 0.78 20
+<function highest_closeness_centrality at 0x112be5e18> 17922 0.78 20
+<function highest_information_centrality at 0x112c1c048> 17922 0.78 20
+<function highest_subgraph_centrality at 0x112c1c0d0> 17922 0.78 20
+<function swarm_high_degrees at 0x112c1c378> 17922 0.78 20
+<function highest_pagerank at 0x112c1c400> 17922 0.78 20
+<function highest_eigenvector_centrality at 0x112c1c488> 17922 0.78 20
+<function highest_betweenness_centrality at 0x112be5f28> 16871 0.72 20
+<function highest_current_flow_betweenness_centrality at 0x112bdfea0> 15172 0.64 20
+<function greedy_maxCover at 0x112c1c510> 10000 0.44 20
+<function highest_approximate_current_flow_betweenness_centrality at 0x112be51e0> 6414 0.24 15
+<function target_cliques_v1 at 0x112c1c268> 1360 0.0 15
+mix_5 661 0.02 15
+<function target_cliques_v2 at 0x112c1c2f0> 819 0.0 12
+mix_4 580 0.0 12
+mix_3 535 0.0 12
+mix_0 503 0.0 12
+mix_2 474 0.0 12
+mix_1 472 0.0 12
+mix_6 452 0.0 12
+mix_7 450 0.0 12
+mix_8 413 0.0 12
+mix_9 387 0.0 12
+<function highest_katz_centrality_np at 0x112bdff28> 240 0.0 9
+<function secure_single_highD_with_lowD_neighbors at 0x112c1c598> 98 0.0 9
+
+compute time: 80.15106391906738
+
+
 2.10.34 (TA_more):
 50% greedy_maxCover, 50% highest betweenness centrality
+<function highest_subgraph_centrality at 0x112c1c0d0> 16861 0.96 20
+<function highest_eigenvector_centrality at 0x112c1c488> 16861 0.96 20
+<function highest_information_centrality at 0x112c1c048> 16500 0.92 20
+<function highest_degree at 0x112be5d90> 13162 0.68 20
+<function swarm_high_degrees at 0x112c1c378> 13162 0.68 20
+<function highest_betweenness_centrality at 0x112be5f28> 6163 0.0 15
+<function highest_current_flow_betweenness_centrality at 0x112bdfea0> 6163 0.0 15
+<function target_cliques_v1 at 0x112c1c268> 5609 0.0 15
+<function target_cliques_v2 at 0x112c1c2f0> 4668 0.0 15
+<function highest_closeness_centrality at 0x112be5e18> 4563 0.14 15
+<function highest_pagerank at 0x112c1c400> 3162 0.04 15
+<function greedy_maxCover at 0x112c1c510> 2698 0.0 15
+mix_2 1332 0.0 15
+mix_5 1319 0.0 15
+<function highest_approximate_current_flow_betweenness_centrality at 0x112be51e0> 1307 0.0 15
+mix_6 1275 0.0 15
+mix_1 1111 0.0 15
+mix_4 1111 0.0 15
+mix_9 1051 0.0 15
+mix_0 1026 0.0 15
+mix_3 943 0.0 15
+<function highest_katz_centrality_np at 0x112bdff28> 939 0.0 15
+mix_8 934 0.0 15
+mix_7 902 0.0 15
+<function secure_single_highD_with_lowD_neighbors at 0x112c1c598> 57 0.0 15
+
+compute time: 60.630539894104004
+
+
 
 greedy_maxCover for everything else
+
+8.10.5:
+STRATEGY SCORES
+<function target_cliques_v2 at 0x112c1c2f0> 3951 0.02 12
+<function highest_katz_centrality_np at 0x112bdff28> 3561 0.0 9
+<function target_cliques_v1 at 0x112c1c268> 2207 0.0 9
+mix_7 1315 0.0 9
+mix_9 978 0.02 9
+mix_0 943 0.0 9
+mix_8 911 0.0 9
+mix_6 770 0.0 9
+mix_3 653 0.0 9
+mix_5 631 0.0 9
+<function greedy_maxCover at 0x112c1c510> 557 0.0 9
+<function highest_closeness_centrality at 0x112be5e18> 552 0.0 9
+<function highest_current_flow_betweenness_centrality at 0x112bdfea0> 239 0.0 9
+mix_2 440 0.0 6
+<function highest_betweenness_centrality at 0x112be5f28> 262 0.0 6
+mix_4 581 0.0 4
+<function highest_approximate_current_flow_betweenness_centrality at 0x112be51e0> 428 0.0 4
+mix_1 419 0.0 4
+<function highest_pagerank at 0x112c1c400> 20 0.0 4
+<function secure_single_highD_with_lowD_neighbors at 0x112c1c598> 110 0.0 2
+<function highest_degree at 0x112be5d90> 18 0.0 2
+<function highest_information_centrality at 0x112c1c048> 18 0.0 2
+<function swarm_high_degrees at 0x112c1c378> 18 0.0 2
+<function highest_subgraph_centrality at 0x112c1c0d0> 0 0.0 1
+<function highest_eigenvector_centrality at 0x112c1c488> 0 0.0 1
+
+compute time: 257.09245014190674
+
+
 
