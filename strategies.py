@@ -15,6 +15,31 @@ def greedy_maxCover_without_highest_degree(graph, n):
 
     return output[:n]
 
+def greedy_maxCover_without_k_highest_degree(graph, n, k=1):
+    high_seeds = set(highest_degree(graph, k))
+    greedy_seeds = greedy_maxCover(graph, n+k)
+
+    output = []
+    for s in greedy_seeds:
+        if s not in high_seeds:
+            output.append(s)
+
+    return output[:n]
+
+def greedy_maxCover_without_1_highest_degree(graph, n):
+    return greedy_maxCover_without_k_highest_degree(graph, n, k=1)
+
+def greedy_maxCover_without_quarter_highest_degree(graph, n):
+    return greedy_maxCover_without_k_highest_degree(graph, n, k=int(0.25*n))
+
+def greedy_maxCover_without_half_highest_degree(graph, n):
+    return greedy_maxCover_without_k_highest_degree(graph, n, k=int(0.5*n))
+
+def greedy_maxCover_without_threequarters_highest_degree(graph, n):
+    return greedy_maxCover_without_k_highest_degree(graph, n, k=int(0.75*n))
+
+def greedy_maxCover_without_all_highest_degree(graph, n):
+    return greedy_maxCover_without_k_highest_degree(graph, n, k=n)
 
 
 def random(graph, n):
@@ -233,21 +258,26 @@ def get_strats(scope, n_players=2):
 
     if scope == "team":
         return [
-            highest_degree, #did NOT beat TA_more
-            highest_closeness_centrality,
-            highest_katz_centrality_np, #did NOT beat TA_more
-            highest_information_centrality, #did NOT beat TA_more
-            highest_subgraph_centrality, #did NOT beat TA_more
-            swarm_high_degrees,
-            target_cliques_v1, #did NOT beat TA_more
-            target_cliques_v2, #did NOT beat TA_more
-            secure_single_highD_with_lowD_neighbors, #did NOT beat TA_more
-            highest_pagerank,
+            # highest_degree, #did NOT beat TA_more
+            # highest_closeness_centrality,
+            # highest_katz_centrality_np, #did NOT beat TA_more
+            # highest_information_centrality, #did NOT beat TA_more
+            # highest_subgraph_centrality, #did NOT beat TA_more
+            # swarm_high_degrees,
+            # target_cliques_v1, #did NOT beat TA_more
+            # target_cliques_v2, #did NOT beat TA_more
+            # secure_single_highD_with_lowD_neighbors, #did NOT beat TA_more
+            # highest_pagerank,
             greedy_maxCover,
-            greedy_maxCover_without_highest_degree,
-            highest_betweenness_centrality,
-            highest_approximate_current_flow_betweenness_centrality,
-            highest_current_flow_betweenness_centrality,
+            # greedy_maxCover_without_highest_degree,
+            greedy_maxCover_without_1_highest_degree,
+            greedy_maxCover_without_quarter_highest_degree,
+            greedy_maxCover_without_half_highest_degree,
+            greedy_maxCover_without_threequarters_highest_degree,
+            greedy_maxCover_without_all_highest_degree
+            # highest_betweenness_centrality,
+            # highest_approximate_current_flow_betweenness_centrality,
+            # highest_current_flow_betweenness_centrality,
             # highest_load_centrality,
             # highest_eigenvector_centrality, #did NOT beat TA_more
             # highest_closeness_vitality #VERY SLOW
